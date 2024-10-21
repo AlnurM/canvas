@@ -9,6 +9,10 @@ function App() {
     { x: 420, y: 740, label: '3' },
   ];
 
+  const handleShapeClick = (point) => {
+    alert(`Coordinates: x=${point.x}, y=${point.y}`);
+  };
+
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -22,7 +26,7 @@ function App() {
         <Stage width={window.innerWidth * 2} height={window.innerHeight}>
           <Layer>
             {points.map((point) => (
-              <Group key={point.label}>
+              <Group key={point.label} onTouchStart={() => handleShapeClick(point)}>
                 <Shape
                   x={point.x}
                   y={point.y}
